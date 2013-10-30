@@ -224,7 +224,7 @@ table {
   float: right;
 }
 
-.frame:after, .clear:after {
+#wrapper:after, .frame:after, .clear:after {
   clear: both;
   content: "";
   display: table;
@@ -245,57 +245,16 @@ table {
   width: 100%;
 }
 
-.parts-2 {
-  width: 50%;
-}
-
-.parts-3 {
-  width: 33.33333%;
-}
-
-.parts-4 {
-  width: 25%;
-}
-
-.parts-5 {
-  width: 20%;
-}
-
-.parts-6 {
-  width: 16.66667%;
-}
-
-.parts-7 {
-  width: 14.28571%;
-}
-
-.parts-8 {
-  width: 12.5%;
-}
-
-.parts-9 {
-  width: 11.11111%;
-}
-
-.parts-10 {
-  width: 10%;
-}
-
-.parts-11 {
-  width: 9.09091%;
-}
-
-.parts-12 {
-  width: 8.33333%;
-}
-
-/* fallbacks for ie8 and down */
 .lt-ie9 .parts-1 {
   width: 960px;
 }
 
 .lt-ie8 .parts-1 {
   width: 930px;
+}
+
+.parts-2 {
+  width: 50%;
 }
 
 .lt-ie9 .parts-2 {
@@ -306,12 +265,20 @@ table {
   width: 450px;
 }
 
+.parts-3 {
+  width: 33.33333%;
+}
+
 .lt-ie9 .parts-3 {
   width: 320px;
 }
 
 .lt-ie8 .parts-3 {
   width: 290px;
+}
+
+.parts-4 {
+  width: 25%;
 }
 
 .lt-ie9 .parts-4 {
@@ -322,12 +289,20 @@ table {
   width: 210px;
 }
 
+.parts-5 {
+  width: 20%;
+}
+
 .lt-ie9 .parts-5 {
   width: 192px;
 }
 
 .lt-ie8 .parts-5 {
   width: 162px;
+}
+
+.parts-6 {
+  width: 16.66667%;
 }
 
 .lt-ie9 .parts-6 {
@@ -338,12 +313,20 @@ table {
   width: 130px;
 }
 
+.parts-7 {
+  width: 14.28571%;
+}
+
 .lt-ie9 .parts-7 {
   width: 137px;
 }
 
 .lt-ie8 .parts-7 {
   width: 107px;
+}
+
+.parts-8 {
+  width: 12.5%;
 }
 
 .lt-ie9 .parts-8 {
@@ -354,12 +337,20 @@ table {
   width: 90px;
 }
 
+.parts-9 {
+  width: 11.11111%;
+}
+
 .lt-ie9 .parts-9 {
   width: 106px;
 }
 
 .lt-ie8 .parts-9 {
   width: 76px;
+}
+
+.parts-10 {
+  width: 10%;
 }
 
 .lt-ie9 .parts-10 {
@@ -370,6 +361,10 @@ table {
   width: 66px;
 }
 
+.parts-11 {
+  width: 9.09091%;
+}
+
 .lt-ie9 .parts-11 {
   width: 87px;
 }
@@ -378,12 +373,40 @@ table {
   width: 57px;
 }
 
+.parts-12 {
+  width: 8.33333%;
+}
+
 .lt-ie9 .parts-12 {
   width: 80px;
 }
 
 .lt-ie8 .parts-12 {
   width: 50px;
+}
+
+.parts-23 {
+  width: 66.66667%;
+}
+
+.lt-ie9 .parts-23 {
+  width: 640px;
+}
+
+.lt-ie8 .parts-23 {
+  width: 610px;
+}
+
+.parts-34 {
+  width: 75%;
+}
+
+.lt-ie9 .parts-34 {
+  width: 720px;
+}
+
+.lt-ie8 .parts-34 {
+  width: 690px;
 }
 
 /* Breakdown #3 -> Portrait Mobile and Lower */

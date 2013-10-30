@@ -20,6 +20,21 @@
 	$pad: $ypad $xpad;		// column padding -- set above
 	
 	
+	// Breakpoint mixin
+	
+	@mixin bp($target) {
+		@if $target == smallest {
+			@media (max-width: $break-3) { @content; }
+		}
+		@else if $target == small {
+			@media (min-width: $break-3) and (max-width: $break-2) { @content; }
+		}
+		@else if $target == medium {
+			@media (min-width: $break-2) and (max-width: $break-1) { @content; }
+		}
+	}
+	
+	
 	
 //	===========================================	
 //	Imports & Partials
@@ -45,7 +60,7 @@
 	
 	[class*='parts-']:last-of-type { float: right; }
 	
-	.frame:after, .clear:after { 
+	#wrapper:after, .frame:after, .clear:after { 
 		clear: both;
 		content: ""; 
 		display: table;
@@ -68,15 +83,22 @@
 	
 	// calculates column widths
 	@for $i from 1 through 12 {
+		$x: 1;
 		.parts-#{$i} { width: percentage(1 / $i); }
-	}
-	
-	/* fallbacks for ie8 and down */
-	
-	@for $i from 1 through 12 {
 		.lt-ie9 .parts-#{$i} { width: floor($ie8-width / $i); } // ie8
 		.lt-ie8 .parts-#{$i} { width: (floor($ie8-width / $i)) - (2 * $xpad); } // ie7 and down (no box-sizing support)
 	}
+	
+	// calculates 2/3 column
+		.parts-23 { width: percentage(2 / 3); }
+		.lt-ie9 .parts-23 { width: floor(($ie8-width / 3) * 2); } // ie8
+		.lt-ie8 .parts-23 { width: (floor(($ie8-width / 3) * 2) - (2 * $xpad)) ; } // ie7 and down (no box-sizing 
+		
+	// calculates 3/4 column
+		.parts-34 { width: percentage(3 / 4); }
+		.lt-ie9 .parts-34 { width: floor(($ie8-width / 4) * 3); } // ie8
+		.lt-ie8 .parts-34 { width: (floor(($ie8-width / 4) * 3) - (2 * $xpad)); } // ie7 and down (no box-sizing 
+
 	
 	
 	
@@ -87,7 +109,7 @@
 	
 	/* Breakdown #3 -> Portrait Mobile and Lower */
 	
-	@media (max-width: $break-3) {
+	@include bp(smallest) {
 		
 		.parts-1,
 		.parts-2,
@@ -123,7 +145,7 @@
 	
 	/* Breakdown #2 -> Landscape Mobile to Portrait Tablet */
 	
-	@media (min-width: $break-3) and (max-width: $break-2) {
+	@include bp(small) {
 
 		.parts-4,
 		.parts-6,
@@ -147,7 +169,7 @@
 	
 	
 	/* Breakdown #1 -> Landscape Tablet to Desktop */
-	@media (min-width: $break-2) and (max-width: $break-1) {
+	@include bp(medium) {
 	
 		.parts-2,
 		.parts-7 {
