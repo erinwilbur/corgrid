@@ -1,0 +1,164 @@
+//	===========================================	
+//	Settings & Configuration
+//	===========================================	
+	
+	$max-width: 1100px;		// max-width on page wrapper
+	$min-width: auto;		// min-width on page wrapper
+	$ie8-width: 960px;		// static width for ie8 and down
+	
+	$break-1: 1000px;		// first break point
+	$break-2: 800px;		// second break point
+	$break-3: 480px;		// third break point
+	
+	$ypad:	10px;			// vertical padding
+	$xpad:	15px;			// horizontal padding
+	
+	
+	// Do not edit below this line for basic setup
+	
+	$box: border-box;		// shouldn't have to change -- fixes padding vs width behavior
+	$pad: $ypad $xpad;		// column padding -- set above
+	
+	
+	
+//	===========================================	
+//	Imports & Partials
+//	===========================================
+	
+	@import	'normalize';	// normalize.css
+	@import 'compass';		// compass	
+	
+
+
+//	===========================================
+//	Backbone: Box-sizing, Padding & Basic Setup
+//	===========================================
+
+	*, *:after, *:before {
+		@include box-sizing($box);
+	}
+	
+	[class*='parts-']{
+		float: left;
+		padding: $pad;
+	}
+	
+	[class*='parts-']:last-of-type { float: right; }
+	
+	.frame:after, .clear:after { 
+		clear: both;
+		content: ""; 
+		display: table;
+	}
+	
+	
+	
+//	===========================================
+//	Wrapper & Column Calculations
+//	===========================================
+	
+	#wrapper {
+		margin: 0 auto;
+		max-width: $max-width;
+		min-width: $min-width;
+		width: 100%; 	
+	}
+	
+	.lt-ie9 #wrapper { width: $ie8-width; }
+	
+	// calculates column widths
+	@for $i from 1 through 12 {
+		.parts-#{$i} { width: percentage(1 / $i); }
+	}
+	
+	/* fallbacks for ie8 and down */
+	
+	@for $i from 1 through 12 {
+		.lt-ie9 .parts-#{$i} { width: floor($ie8-width / $i); } // ie8
+		.lt-ie8 .parts-#{$i} { width: (floor($ie8-width / $i)) - (2 * $xpad); } // ie7 and down (no box-sizing support)
+	}
+	
+	
+	
+//	===========================================
+//	Media Queries
+//	===========================================
+
+	
+	/* Breakdown #3 -> Portrait Mobile and Lower */
+	
+	@media (max-width: $break-3) {
+		
+		.parts-1,
+		.parts-2,
+		.parts-3,
+		.parts-4,
+		.parts-5,
+		.parts-6,
+		.parts-7,
+		.parts-8,
+		.parts-9,
+		.parts-10,
+		.parts-11,
+		.parts-12 {
+			width: 100%;
+		}
+		
+		.frame .parts-4:nth-child(2) {
+			float: right;
+		}
+		
+		.frame .parts-4:nth-child(3) {
+			clear: both;
+			float: left;
+		}
+		
+		.frame .parts-4:nth-child(4) {
+			float: right;
+		}
+		
+	}
+	
+	
+	
+	/* Breakdown #2 -> Landscape Mobile to Portrait Tablet */
+	
+	@media (min-width: $break-3) and (max-width: $break-2) {
+
+		.parts-4,
+		.parts-6,
+		.parts-8,
+		.parts-10,
+		.parts-12 {
+			width: 50%;
+		}
+		
+		.parts-1,
+		.parts-2,
+		.parts-3,
+		.parts-5,
+		.parts-7,
+		.parts-9,
+		.parts-11 {
+			width: 100%;
+		}
+
+	}
+	
+	
+	/* Breakdown #1 -> Landscape Tablet to Desktop */
+	@media (min-width: $break-2) and (max-width: $break-1) {
+	
+		.parts-2,
+		.parts-7 {
+			width: 100%;
+		}
+		
+		.parts-4,
+		.parts-8,
+		.parts-10,
+		.parts-12 {
+			width: 50%;
+		}
+
+	}

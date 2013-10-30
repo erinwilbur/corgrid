@@ -1,0 +1,7 @@
+[class*='parts-'] span {
+  background: #e65795;
+  border-radius: 2px;
+  display: block;
+  height: 30px;
+  opacity: 0.5;
+}
